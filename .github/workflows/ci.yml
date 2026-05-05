@@ -13,6 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create reproducible .env from repo
+        run: |
+          test -f .env.rb || (echo ".env.rb is required for reproducible builds" && exit 1)
+          cp .env.rb .env
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -22,7 +27,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.41.1"
+          flutter-version: "3.41.5"
           channel: "stable"
 
       - name: Get dependencies
@@ -42,6 +47,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create reproducible .env from repo
+        run: |
+          test -f .env.rb || (echo ".env.rb is required for reproducible builds" && exit 1)
+          cp .env.rb .env
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -51,7 +61,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.41.1"
+          flutter-version: "3.41.5"
           channel: "stable"
 
       - name: Get dependencies
